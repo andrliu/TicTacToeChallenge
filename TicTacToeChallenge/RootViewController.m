@@ -19,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelEight;
 @property (weak, nonatomic) IBOutlet UILabel *labelNine;
 @property (weak, nonatomic) IBOutlet UILabel *whichPlayerLabel;
+@property (weak, nonatomic) UILabel *label;
+@property (nonatomic) CGPoint originalPlayerLabelCenter;
+@property (nonatomic) CGPoint touchPoint;
 
 @end
 
@@ -27,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.originalPlayerLabelCenter = self.whichPlayerLabel.center;
 }
 
 - (UILabel *)findLabelUsingPoint:(CGPoint)point
@@ -80,88 +84,208 @@
 
 - (NSString *)whoWon
 {
-    if (self.labelOne.text == self.labelTwo.text && self.labelOne.text == self.labelThree.text)
+    if ([self.labelOne.text isEqualToString: self.labelTwo.text] &&
+        [self.labelOne.text isEqualToString: self.labelThree.text])
     {
         return self.labelOne.text;
     }
     else
-        if (self.labelOne.text == self.labelFive.text && self.labelOne.text == self.labelNine.text)
+        if ([self.labelOne.text isEqualToString: self.labelFive.text] &&
+            [self.labelOne.text isEqualToString: self.labelNine.text])
         {
             return self.labelOne.text;
         }
     else
-        if (self.labelOne.text == self.labelFour.text && self.labelOne.text == self.labelSeven.text)
+        if ([self.labelOne.text isEqualToString: self.labelFour.text] &&
+            [self.labelOne.text isEqualToString: self.labelSeven.text ])
         {
             return self.labelOne.text;
         }
     else
-        if (self.labelTwo.text == self.labelFive.text && self.labelTwo.text == self.labelEight.text)
+        if ([self.labelTwo.text isEqualToString: self.labelFive.text] &&
+            [self.labelTwo.text isEqualToString: self.labelEight.text])
         {
             return self.labelTwo.text;
         }
     else
-        if (self.labelThree.text == self.labelFive.text && self.labelThree.text == self.labelSeven.text)
+        if ([self.labelThree.text isEqualToString: self.labelFive.text] &&
+            [self.labelThree.text isEqualToString: self.labelSeven.text])
         {
             return self.labelThree.text;
         }
     else
-        if (self.labelThree.text == self.labelSix.text && self.labelThree.text == self.labelNine.text)
+        if ([self.labelThree.text isEqualToString: self.labelSix.text] &&
+            [self.labelThree.text isEqualToString: self.labelNine.text])
         {
             return self.labelThree.text;
         }
     else
-        if (self.labelFour.text == self.labelFive.text && self.labelFour.text == self.labelSix.text)
+        if ([self.labelFour.text isEqualToString: self.labelFive.text] &&
+            [self.labelFour.text isEqualToString: self.labelSix.text])
         {
             return self.labelFour.text;
         }
     else
-        if (self.labelSeven.text == self.labelEight.text && self.labelSeven.text == self.labelNine.text)
+        if ([self.labelSeven.text isEqualToString: self.labelEight.text] &&
+            [self.labelSeven.text isEqualToString: self.labelNine.text])
         {
             return self.labelSeven.text;
+        }
+    else
+        if (![self.labelOne.text     isEqualToString: @"1"] &&
+            ![self.labelTwo.text     isEqualToString: @"2"] &&
+            ![self.labelThree.text   isEqualToString: @"3"] &&
+            ![self.labelFour.text    isEqualToString: @"4"] &&
+            ![self.labelFive.text    isEqualToString: @"5"] &&
+            ![self.labelSix.text     isEqualToString: @"6"] &&
+            ![self.labelSeven.text   isEqualToString: @"7"] &&
+            ![self.labelEight.text   isEqualToString: @"8"] &&
+            ![self.labelNine.text    isEqualToString: @"9"])
+        {
+            return @"draw";
         }
     return nil;
 }
 
-- (IBAction)onLabelTapped:(UITapGestureRecognizer *)gesture
+- (NSString *)resultMessage
 {
-    CGPoint point = [gesture locationInView:self.view];
-    UILabel *label = [self findLabelUsingPoint:point];
-    NSString *winner = [NSString stringWithFormat:@"Winner is %@", [self whoWon]];
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"" message:winner delegate:self cancelButtonTitle:@"Restart" otherButtonTitles: nil, nil];
-    if (CGRectContainsPoint(label.frame, point))
+    if ([[self whoWon] isEqualToString: @"X"] ||
+        [[self whoWon] isEqualToString: @"O"]
+        )
     {
-        if ([label.text isEqualToString:@"O"] || [label.text isEqualToString:@"X"])
+        return [NSString stringWithFormat:@"The winner is player %@", [self whoWon]];
+    }
+    else
+        if ([[self whoWon] isEqualToString: @"draw"])
         {
-            nil;
+            return [NSString stringWithFormat:@"GG"];
         }
-        else
+    return nil;
+}
+
+- (void)resetLabel
+{
+    self.whichPlayerLabel.text      = @"Player";
+    self.whichPlayerLabel.textColor = [UIColor blackColor];
+    self.labelOne.text              = @"1";
+    self.labelOne.textColor         = [UIColor blackColor];
+    self.labelTwo.text              = @"2";
+    self.labelTwo.textColor         = [UIColor blackColor];
+    self.labelThree.text            = @"3";
+    self.labelThree.textColor       = [UIColor blackColor];
+    self.labelFour.text             = @"4";
+    self.labelFour.textColor        = [UIColor blackColor];
+    self.labelFive.text             = @"5";
+    self.labelFive.textColor        = [UIColor blackColor];
+    self.labelSix.text              = @"6";
+    self.labelSix.textColor         = [UIColor blackColor];
+    self.labelSeven.text            = @"7";
+    self.labelSeven.textColor       = [UIColor blackColor];
+    self.labelEight.text            = @"8";
+    self.labelEight.textColor       = [UIColor blackColor];
+    self.labelNine.text             = @"9";
+    self.labelNine.textColor        = [UIColor blackColor];
+}
+
+- (void)alert
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message: [self resultMessage] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *restartButton = [UIAlertAction actionWithTitle:@"Restart" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                    {
+                                        [self resetLabel];
+                                    }
+                                    ];
+    [alert addAction:restartButton];
+    [self presentViewController: alert animated:YES completion:nil];
+}
+
+- (void) xTurn
+{
+    self.whichPlayerLabel.text = @"X";
+    self.whichPlayerLabel.textColor = [UIColor blueColor];
+}
+
+- (void) oTurn
+{
+    self.whichPlayerLabel.text = @"O";
+    self.whichPlayerLabel.textColor = [UIColor redColor];
+}
+
+- (void) switchPlayer
+{
+    if ([self.label.text isEqualToString:@"X"] ||
+        [self.label.text isEqualToString:@"O"])
+    {
+        nil;
+    }
+    else
+    {
+        if ([self.whichPlayerLabel.text isEqualToString: @"Player"] ||
+            [self.whichPlayerLabel.text isEqualToString: @"X"])
         {
-            if ([self.whichPlayerLabel.text isEqualToString: @"Player"] || [self.whichPlayerLabel.text isEqualToString: @"X"])
+            self.label.text = @"X";
+            self.label.textColor = [UIColor blueColor];
+            if ([[self whoWon] isEqualToString: @"X"] ||
+                [[self whoWon] isEqualToString: @"O"] ||
+                [[self whoWon] isEqualToString: @"draw"])
             {
-                label.text = @"X";
-                label.textColor = [UIColor blueColor];
-                [alert show];
-                self.whichPlayerLabel.text = @"O";
-                self.whichPlayerLabel.textColor = [UIColor redColor];
+                [self alert];
             }
             else
-                if ([self.whichPlayerLabel.text isEqualToString: @"O"])
+            {
+                [self oTurn];
+            }
+        }
+        else
+            if ([self.whichPlayerLabel.text isEqualToString: @"O"])
+            {
+                self.label.text = self.whichPlayerLabel.text;
+                self.label.textColor = self.whichPlayerLabel.textColor;
+                if ([[self whoWon] isEqualToString: @"X"] ||
+                    [[self whoWon] isEqualToString: @"O"] ||
+                    [[self whoWon] isEqualToString: @"draw"])
                 {
-                    label.text = self.whichPlayerLabel.text;
-                    label.textColor = self.whichPlayerLabel.textColor;
-                    [alert show];
-                    self.whichPlayerLabel.text = @"X";
-                    self.whichPlayerLabel.textColor = [UIColor blueColor];
+                    [self alert];
                 }
+                else
+                {
+                    [self xTurn];
+                }
+            }
+    }
+}
+
+- (IBAction)onLabelTapped:(UITapGestureRecognizer *)gesture
+{
+    self.touchPoint = [gesture locationInView:self.view];
+    self.label = [self findLabelUsingPoint:self.touchPoint];
+    if (CGRectContainsPoint(self.label.frame, self.touchPoint))
+    {
+        [self switchPlayer];
+    }
+}
+
+- (void) panGestureAnimation
+{
+    [UIView animateWithDuration:1 animations:^
+     {
+         self.whichPlayerLabel.center = self.originalPlayerLabelCenter;
+     }];
+}
+
+- (IBAction)onLabelPanned:(UIPanGestureRecognizer *)gesture
+{
+    self.touchPoint = [gesture locationInView:self.view];
+    self.label = [self findLabelUsingPoint:self.touchPoint];
+    self.whichPlayerLabel.center = self.touchPoint;
+    if (gesture.state == UIGestureRecognizerStateEnded)
+    {
+        if (CGRectContainsPoint(self.label.frame, self.touchPoint))
+        {
+            [self switchPlayer];
+            [self panGestureAnimation];
         }
     }
 }
 
-
-
-
-
 @end
-
-
-
