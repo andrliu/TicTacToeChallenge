@@ -79,24 +79,21 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xt3-TB-qki">
-                                <rect key="frame" x="62" y="50" width="200" height="50"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Player" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKn-aA-kD6">
                                 <rect key="frame" x="62" y="450" width="200" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ZaU-0M-Q9Q" appends="YES" id="2wW-Fq-vk0"/>
+                                </connections>
                             </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="mEK-2a-NT8" appends="YES" id="Mch-Dr-keQ"/>
+                            <outletCollection property="gestureRecognizers" destination="ZaU-0M-Q9Q" appends="YES" id="vzY-IN-ors"/>
                         </connections>
                     </view>
                     <connections>
@@ -110,7 +107,6 @@
                         <outlet property="labelThree" destination="6cn-ds-iqk" id="c8V-zX-3GA"/>
                         <outlet property="labelTwo" destination="We5-fu-igl" id="FKH-Ha-o0N"/>
                         <outlet property="whichPlayerLabel" destination="cKn-aA-kD6" id="zya-wo-FcE"/>
-                        <outlet property="winner" destination="Xt3-TB-qki" id="Rqr-jm-GgD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -119,6 +115,7 @@
                         <action selector="onLabelTapped:" destination="vXZ-lx-hvc" id="AaY-Rd-xf1"/>
                     </connections>
                 </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="ZaU-0M-Q9Q"/>
             </objects>
             <point key="canvasLocation" x="162.66666666666666" y="334.17333333333335"/>
         </scene>

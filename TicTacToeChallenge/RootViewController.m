@@ -19,7 +19,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelEight;
 @property (weak, nonatomic) IBOutlet UILabel *labelNine;
 @property (weak, nonatomic) IBOutlet UILabel *whichPlayerLabel;
-@property (weak, nonatomic) IBOutlet UILabel *winner;
 
 @end
 
@@ -81,42 +80,42 @@
 
 - (NSString *)whoWon
 {
-    if (self.labelOne.text == self.labelTwo.text & self.labelOne.text == self.labelThree.text)
+    if (self.labelOne.text == self.labelTwo.text && self.labelOne.text == self.labelThree.text)
     {
         return self.labelOne.text;
     }
     else
-        if (self.labelOne.text == self.labelFive.text & self.labelOne.text == self.labelNine.text)
+        if (self.labelOne.text == self.labelFive.text && self.labelOne.text == self.labelNine.text)
         {
             return self.labelOne.text;
         }
     else
-        if (self.labelOne.text == self.labelFour.text & self.labelOne.text == self.labelSeven.text)
+        if (self.labelOne.text == self.labelFour.text && self.labelOne.text == self.labelSeven.text)
         {
             return self.labelOne.text;
         }
     else
-        if (self.labelTwo.text == self.labelFive.text & self.labelTwo.text == self.labelEight.text)
+        if (self.labelTwo.text == self.labelFive.text && self.labelTwo.text == self.labelEight.text)
         {
             return self.labelTwo.text;
         }
     else
-        if (self.labelThree.text == self.labelFive.text & self.labelThree.text == self.labelSeven.text)
+        if (self.labelThree.text == self.labelFive.text && self.labelThree.text == self.labelSeven.text)
         {
             return self.labelThree.text;
         }
     else
-        if (self.labelThree.text == self.labelSix.text & self.labelThree.text == self.labelNine.text)
+        if (self.labelThree.text == self.labelSix.text && self.labelThree.text == self.labelNine.text)
         {
             return self.labelThree.text;
         }
     else
-        if (self.labelFour.text == self.labelFive.text & self.labelFour.text == self.labelSix.text)
+        if (self.labelFour.text == self.labelFive.text && self.labelFour.text == self.labelSix.text)
         {
             return self.labelFour.text;
         }
     else
-        if (self.labelSeven.text == self.labelEight.text & self.labelSeven.text == self.labelNine.text)
+        if (self.labelSeven.text == self.labelEight.text && self.labelSeven.text == self.labelNine.text)
         {
             return self.labelSeven.text;
         }
@@ -127,36 +126,30 @@
 {
     CGPoint point = [gesture locationInView:self.view];
     UILabel *label = [self findLabelUsingPoint:point];
+    NSString *winner = [NSString stringWithFormat:@"Winner is %@", [self whoWon]];
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"" message:winner delegate:self cancelButtonTitle:@"Restart" otherButtonTitles: nil, nil];
     if (CGRectContainsPoint(label.frame, point))
     {
-        if ([label.text isEqualToString:@"O"] | [label.text isEqualToString:@"X"])
+        if ([label.text isEqualToString:@"O"] || [label.text isEqualToString:@"X"])
         {
             nil;
         }
         else
         {
-            if ([self.whichPlayerLabel.text isEqualToString: @"Player"])
+            if ([self.whichPlayerLabel.text isEqualToString: @"Player"] || [self.whichPlayerLabel.text isEqualToString: @"X"])
             {
                 label.text = @"X";
                 label.textColor = [UIColor blueColor];
+                [alert show];
                 self.whichPlayerLabel.text = @"O";
                 self.whichPlayerLabel.textColor = [UIColor redColor];
             }
-            else
-                if ([self.whichPlayerLabel.text isEqualToString: @"X"])
-                {
-                    label.text = self.whichPlayerLabel.text;
-                    label.textColor = self.whichPlayerLabel.textColor;
-                    self.winner.text = [self whoWon];
-                    self.whichPlayerLabel.text = @"O";
-                    self.whichPlayerLabel.textColor = [UIColor redColor];
-                }
             else
                 if ([self.whichPlayerLabel.text isEqualToString: @"O"])
                 {
                     label.text = self.whichPlayerLabel.text;
                     label.textColor = self.whichPlayerLabel.textColor;
-                    self.winner.text = [self whoWon];
+                    [alert show];
                     self.whichPlayerLabel.text = @"X";
                     self.whichPlayerLabel.textColor = [UIColor blueColor];
                 }
