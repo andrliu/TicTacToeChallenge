@@ -84,26 +84,28 @@
     UILabel *label = [self findLabelUsingPoint:point];
     if (CGRectContainsPoint(label.frame, point))
     {
-        if ([self.whichPlayerLabel.text isEqualToString: @"X"])
+        if ([label.text isEqualToString:@"O"] || [label.text isEqualToString:@"X"])
         {
-            label.text = self.whichPlayerLabel.text;
-            label.textColor = self.whichPlayerLabel.textColor;
-            self.whichPlayerLabel.text = @"O";
-            self.whichPlayerLabel.textColor = [UIColor redColor];
+            nil;
         }
         else
-            if ([self.whichPlayerLabel.text isEqualToString: @"O"])
+        {
+            if ([self.whichPlayerLabel.text isEqualToString: @"X"])
             {
                 label.text = self.whichPlayerLabel.text;
                 label.textColor = self.whichPlayerLabel.textColor;
-                self.whichPlayerLabel.text = @"X";
-                self.whichPlayerLabel.textColor = [UIColor blueColor];
+                self.whichPlayerLabel.text = @"O";
+                self.whichPlayerLabel.textColor = [UIColor redColor];
             }
-
-        if ([label.text isEqualToString:@"O"] || [label.text isEqualToString:@"X"])
-        {
-
-        };
+            else
+                if ([self.whichPlayerLabel.text isEqualToString: @"O"])
+                {
+                    label.text = self.whichPlayerLabel.text;
+                    label.textColor = self.whichPlayerLabel.textColor;
+                    self.whichPlayerLabel.text = @"X";
+                    self.whichPlayerLabel.textColor = [UIColor blueColor];
+                }
+        }
     }
 }
 
