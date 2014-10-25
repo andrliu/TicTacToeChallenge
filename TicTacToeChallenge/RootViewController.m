@@ -267,7 +267,7 @@
 
 - (void) panGestureAnimation
 {
-    [UIView animateWithDuration:1 animations:^
+    [UIView animateWithDuration:0 animations:^
      {
          self.whichPlayerLabel.center = self.originalPlayerLabelCenter;
      }];
@@ -276,14 +276,17 @@
 - (IBAction)onLabelPanned:(UIPanGestureRecognizer *)gesture
 {
     self.touchPoint = [gesture locationInView:self.view];
-    self.label = [self findLabelUsingPoint:self.touchPoint];
-    self.whichPlayerLabel.center = self.touchPoint;
-    if (gesture.state == UIGestureRecognizerStateEnded)
+    if (CGRectContainsPoint(self.whichPlayerLabel.frame, self.touchPoint))
     {
-        if (CGRectContainsPoint(self.label.frame, self.touchPoint))
+        self.whichPlayerLabel.center = self.touchPoint;
+        self.label = [self findLabelUsingPoint:self.touchPoint];
+        if (gesture.state == UIGestureRecognizerStateEnded)
         {
-            [self switchPlayer];
             [self panGestureAnimation];
+            if (CGRectContainsPoint(self.label.frame, self.touchPoint))
+            {
+                [self switchPlayer];
+            }
         }
     }
 }
