@@ -39,7 +39,7 @@
 
 - (void)startSign
 {
-    UIAlertController *startSign = [UIAlertController alertControllerWithTitle:@"" message: @"Welcome" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *startSign = [UIAlertController alertControllerWithTitle:@"" message: @"Welcome Tic, Tac, Toe Challenge" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *startButton = [UIAlertAction actionWithTitle:@"Challenge Accpted" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
                                     {
                                         [self startTime];
@@ -51,12 +51,10 @@
 
 - (void)startTime
 {
-
     NSInteger time = kTime;
     self.navigationItem.title = [NSString stringWithFormat:@"%ld", time];
     self.timing = kTime;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countDown) userInfo:nil repeats:YES];
-
 }
 
 - (void)countDown
@@ -70,6 +68,7 @@
     {
         [self stopTime];
         [self timeOut];
+        [self startTime];
     }
 }
 
@@ -83,20 +82,28 @@
     if ([self.whichPlayerLabel.text isEqualToString:@"Player"])
     {
         [self oTurn];
-        [self startTime];
     }
     else
         if ([self.whichPlayerLabel.text isEqualToString:@"O"])
         {
             [self xTurn];
-            [self startTime];
         }
         else
             if ([self.whichPlayerLabel.text isEqualToString:@"X"])
             {
                 [self oTurn];
-                [self startTime];
             }
+}
+
+- (void)computer
+{
+    if ([self.labelFive.text isEqualToString:@"X"]) {
+        <#statements#>
+    }
+
+
+
+
 }
 
 - (UILabel *)findLabelUsingPoint:(CGPoint)point
@@ -251,6 +258,7 @@
     self.labelEight.textColor       = [UIColor blackColor];
     self.labelNine.text             = @"9";
     self.labelNine.textColor        = [UIColor blackColor];
+    self.navigationItem.title       = [NSString stringWithFormat:@"Tic Tac Toe Challenge"];
 }
 
 - (void)alert
@@ -259,6 +267,8 @@
     UIAlertAction *restartButton = [UIAlertAction actionWithTitle:@"Restart" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
                                     {
                                         [self resetLabel];
+                                        [self stopTime];
+                                        [self startTime];
                                     }
                                     ];
     [alert addAction:restartButton];
@@ -328,6 +338,7 @@
     if (CGRectContainsPoint(self.label.frame, self.touchPoint))
     {
         [self switchPlayer];
+        [self stopTime];
         [self startTime];
     }
 }
@@ -352,10 +363,19 @@
             if (CGRectContainsPoint(self.label.frame, self.touchPoint))
             {
                 [self switchPlayer];
+                [self stopTime];
+                [self startTime];
             }
             [self panGestureAnimation];
         }
     }
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [self stopTime];
+    self.navigationItem.title = [NSString stringWithFormat:@"Tic Tac Toe Challenge"];
+}
+
 
 @end

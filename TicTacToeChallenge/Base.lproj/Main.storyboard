@@ -5,7 +5,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Tic Tac Toe Challenge-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="RootViewController" sceneMemberID="viewController">
@@ -159,7 +159,7 @@
                             <outletCollection property="gestureRecognizers" destination="ZaU-0M-Q9Q" appends="YES" id="vzY-IN-ors"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="jvV-q6-5Tn">
+                    <navigationItem key="navigationItem" title="Tic Tac Toe Challenge" id="jvV-q6-5Tn">
                         <barButtonItem key="rightBarButtonItem" title="Help" id="vdi-53-sFo">
                             <connections>
                                 <segue destination="qgF-u3-EH3" kind="push" id="fW9-eg-Ws6"/>
