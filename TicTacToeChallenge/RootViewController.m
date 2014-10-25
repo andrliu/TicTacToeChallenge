@@ -7,6 +7,7 @@
 //
 
 #import "RootViewController.h"
+#define kTime 10;
 
 @interface RootViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *labelOne;
@@ -20,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelNine;
 @property (weak, nonatomic) IBOutlet UILabel *whichPlayerLabel;
 @property (weak, nonatomic) UILabel *label;
+@property (weak, nonatomic) NSTimer *timer;
+@property (nonatomic) NSInteger timing;
 @property (nonatomic) CGPoint originalPlayerLabelCenter;
 @property (nonatomic) CGPoint touchPoint;
 
@@ -30,7 +33,70 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self startSign];
     self.originalPlayerLabelCenter = self.whichPlayerLabel.center;
+}
+
+- (void)startSign
+{
+    UIAlertController *startSign = [UIAlertController alertControllerWithTitle:@"" message: @"Welcome" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *startButton = [UIAlertAction actionWithTitle:@"Challenge Accpted" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
+                                    {
+                                        [self startTime];
+                                    }
+                                    ];
+    [startSign addAction:startButton];
+    [self presentViewController: startSign animated:YES completion:nil];
+}
+
+- (void)startTime
+{
+
+    NSInteger time = kTime;
+    self.navigationItem.title = [NSString stringWithFormat:@"%ld", time];
+    self.timing = kTime;
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countDown) userInfo:nil repeats:YES];
+
+}
+
+- (void)countDown
+{
+    if (self.timing > 0)
+    {
+        self.timing--;
+        self.navigationItem.title = [NSString stringWithFormat:@"%ld", (NSInteger)self.timing];
+    }
+    else
+    {
+        [self stopTime];
+        [self timeOut];
+    }
+}
+
+- (void)stopTime
+{
+    [self.timer invalidate];
+}
+
+- (void)timeOut
+{
+    if ([self.whichPlayerLabel.text isEqualToString:@"Player"])
+    {
+        [self oTurn];
+        [self startTime];
+    }
+    else
+        if ([self.whichPlayerLabel.text isEqualToString:@"O"])
+        {
+            [self xTurn];
+            [self startTime];
+        }
+        else
+            if ([self.whichPlayerLabel.text isEqualToString:@"X"])
+            {
+                [self oTurn];
+                [self startTime];
+            }
 }
 
 - (UILabel *)findLabelUsingPoint:(CGPoint)point
@@ -262,6 +328,7 @@
     if (CGRectContainsPoint(self.label.frame, self.touchPoint))
     {
         [self switchPlayer];
+        [self startTime];
     }
 }
 
@@ -282,11 +349,11 @@
         self.label = [self findLabelUsingPoint:self.touchPoint];
         if (gesture.state == UIGestureRecognizerStateEnded)
         {
-            [self panGestureAnimation];
             if (CGRectContainsPoint(self.label.frame, self.touchPoint))
             {
                 [self switchPlayer];
             }
+            [self panGestureAnimation];
         }
     }
 }
