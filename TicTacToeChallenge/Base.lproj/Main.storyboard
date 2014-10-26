@@ -117,7 +117,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKn-aA-kD6">
-                                <rect key="frame" x="36" y="310" width="50" height="50"/>
+                                <rect key="frame" x="135" y="310" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Zga-M6-dxW"/>
@@ -140,7 +140,6 @@
                             <constraint firstItem="KMM-WA-43J" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="150" id="8hC-HG-LKf"/>
                             <constraint firstItem="We5-fu-igl" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="70" id="Cj1-Eh-WeS"/>
                             <constraint firstItem="QIT-0T-B5Q" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="150" id="DTh-Zo-B6g"/>
-                            <constraint firstItem="cKn-aA-kD6" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="Etc-iT-EEk"/>
                             <constraint firstAttribute="centerX" secondItem="QIT-0T-B5Q" secondAttribute="centerX" id="QA5-vg-WKC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6cn-ds-iqk" secondAttribute="trailing" constant="20" id="RFo-SL-GtQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8XG-uz-scg" secondAttribute="trailing" constant="20" id="SgF-mC-6fm"/>
@@ -152,6 +151,7 @@
                             <constraint firstItem="uNH-gF-9he" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="230" id="pRT-zd-DY2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xBa-46-7CZ" secondAttribute="trailing" constant="20" id="qrG-Wz-dUQ"/>
                             <constraint firstAttribute="centerX" secondItem="We5-fu-igl" secondAttribute="centerX" id="slH-tE-OKT"/>
+                            <constraint firstAttribute="centerX" secondItem="cKn-aA-kD6" secondAttribute="centerX" id="vjD-td-mdX"/>
                             <constraint firstAttribute="centerX" secondItem="uNH-gF-9he" secondAttribute="centerX" id="zR5-xi-aSS"/>
                         </constraints>
                         <connections>

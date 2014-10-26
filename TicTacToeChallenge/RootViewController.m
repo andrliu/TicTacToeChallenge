@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-#define kTime 2;
+#define kTime 4;
 
 @interface RootViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *labelOne;
@@ -52,7 +52,7 @@
 - (void)startTime
 {
     NSInteger time = kTime;
-    self.navigationItem.title = [NSString stringWithFormat:@"%ld", time];
+    self.navigationItem.title = [NSString stringWithFormat:@"%ld", (long)time];
     self.timing = kTime;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(countDown) userInfo:nil repeats:YES];
 }
@@ -67,7 +67,7 @@
     if (self.timing > 0)
     {
         self.timing--;
-        self.navigationItem.title = [NSString stringWithFormat:@"%ld", (NSInteger)self.timing];
+        self.navigationItem.title = [NSString stringWithFormat:@"%ld", (long)self.timing];
     }
     else
     {
@@ -300,118 +300,908 @@
     self.navigationItem.title       = [NSString stringWithFormat:@"Tic Tac Toe Challenge"];
 }
 
--(void)winner158
+
+- (void)defense
 {
-    if ([self.labelOne.text isEqualToString: self.labelTwo.text] &&
-        [self.labelOne.text isEqualToString: self.labelThree.text])
-    {
-        return self.labelOne.text;
-    }
-    else
-        if ([self.labelOne.text isEqualToString: self.labelFive.text] &&
-            [self.labelOne.text isEqualToString: self.labelNine.text])
+    if (
+        ([self.labelOne.text isEqualToString:@"O"] &&
+        [self.labelTwo.text isEqualToString:@"O"] &&
+        [self.labelTwo.text isEqualToString:@"3"]) ||
+        ([self.labelOne.text isEqualToString:@"X"] &&
+        [self.labelTwo.text isEqualToString:@"X"] &&
+        [self.labelTwo.text isEqualToString:@"3"]
+         ))
         {
-            return self.labelOne.text;
+            self.labelThree.text = @"O";
+            self.labelThree.textColor = [UIColor redColor];
         }
-        else
-            if ([self.labelOne.text isEqualToString: self.labelFour.text] &&
-                [self.labelOne.text isEqualToString: self.labelSeven.text ])
-            {
-                return self.labelOne.text;
-            }
-            else
-                if ([self.labelTwo.text isEqualToString: self.labelFive.text] &&
-                    [self.labelTwo.text isEqualToString: self.labelEight.text])
-                {
-                    return self.labelTwo.text;
-                }
-                else
-                    if ([self.labelThree.text isEqualToString: self.labelFive.text] &&
-                        [self.labelThree.text isEqualToString: self.labelSeven.text])
-                    {
-                        return self.labelThree.text;
-                    }
-                    else
-                        if ([self.labelThree.text isEqualToString: self.labelSix.text] &&
-                            [self.labelThree.text isEqualToString: self.labelNine.text])
-                        {
-                            return self.labelThree.text;
-                        }
-                        else
-                            if ([self.labelFour.text isEqualToString: self.labelFive.text] &&
-                                [self.labelFour.text isEqualToString: self.labelSix.text])
-                            {
-                                return self.labelFour.text;
-                            }
-                            else
-                                if ([self.labelSeven.text isEqualToString: self.labelEight.text] &&
-                                    [self.labelSeven.text isEqualToString: self.labelNine.text])
-                                {
-                                    return self.labelSeven.text;
-                                }
+    else
+        if (
+            ([self.labelOne.text isEqualToString:@"O"] &&
+            [self.labelThree.text isEqualToString:@"O"] &&
+            [self.labelTwo.text isEqualToString:@"2"]) ||
+            ([self.labelOne.text isEqualToString:@"X"] &&
+            [self.labelThree.text isEqualToString:@"X"] &&
+            [self.labelTwo.text isEqualToString:@"2"])
+            )
+        {
+            self.labelTwo.text = @"O";
+            self.labelTwo.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelTwo.text isEqualToString:@"O"] &&
+            [self.labelThree.text isEqualToString:@"O"] &&
+            [self.labelOne.text isEqualToString:@"1"]) ||
+            ([self.labelTwo.text isEqualToString:@"X"] &&
+            [self.labelThree.text isEqualToString:@"X"] &&
+             [self.labelOne.text isEqualToString:@"1"])
+            )
+        {
+            self.labelOne.text = @"O";
+            self.labelOne.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelOne.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"9"]) ||
+            ([self.labelOne.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"9"])
+            )
+        {
+            self.labelNine.text = @"O";
+            self.labelNine.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelOne.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"5"]) ||
+            ([self.labelOne.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"5"])
+            )
+        {
+            self.labelFive.text = @"O";
+            self.labelFive.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"O"] &&
+            [self.labelOne.text isEqualToString:@"1"]) ||
+            ([self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"X"] &&
+            [self.labelOne.text isEqualToString:@"1"])
+            )
+        {
+            self.labelOne.text = @"O";
+            self.labelOne.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelOne.text isEqualToString:@"O"] &&
+            [self.labelFour.text isEqualToString:@"O"] &&
+            [self.labelSeven.text isEqualToString:@"7"]) ||
+            ([self.labelOne.text isEqualToString:@"X"] &&
+            [self.labelFour.text isEqualToString:@"X"] &&
+            [self.labelSeven.text isEqualToString:@"7"])
+            )
+        {
+            self.labelSeven.text = @"O";
+            self.labelSeven.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelOne.text isEqualToString:@"O"] &&
+            [self.labelSeven.text isEqualToString:@"O"] &&
+            [self.labelFour.text isEqualToString:@"4"]) ||
+            ([self.labelOne.text isEqualToString:@"X"] &&
+            [self.labelSeven.text isEqualToString:@"X"] &&
+            [self.labelFour.text isEqualToString:@"4"])
+            )
+        {
+            self.labelFour.text = @"O";
+            self.labelFour.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelFour.text isEqualToString:@"O"] &&
+            [self.labelSeven.text isEqualToString:@"O"] &&
+            [self.labelOne.text isEqualToString:@"1"]) ||
+            ([self.labelFour.text isEqualToString:@"X"] &&
+            [self.labelSeven.text isEqualToString:@"X"] &&
+            [self.labelOne.text isEqualToString:@"1"])
+            )
+        {
+            self.labelOne.text = @"O";
+            self.labelOne.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelTwo.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelEight.text isEqualToString:@"8"]) ||
+            ([self.labelTwo.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelEight.text isEqualToString:@"8"])
+            )
+        {
+            self.labelEight.text = @"O";
+            self.labelEight.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelTwo.text isEqualToString:@"O"] &&
+            [self.labelEight.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"5"]) ||
+            ([self.labelTwo.text isEqualToString:@"X"] &&
+            [self.labelEight.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"5"])
+            )
+        {
+            self.labelFive.text = @"O";
+            self.labelFive.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelEight.text isEqualToString:@"O"] &&
+            [self.labelTwo.text isEqualToString:@"2"]) ||
+            ([self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelEight.text isEqualToString:@"X"] &&
+            [self.labelTwo.text isEqualToString:@"2"])
+            )
+        {
+            self.labelTwo.text = @"O";
+            self.labelTwo.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelThree.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelSeven.text isEqualToString:@"7"]) ||
+            ([self.labelThree.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelSeven.text isEqualToString:@"7"])
+            )
+        {
+            self.labelSeven.text = @"O";
+            self.labelSeven.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelThree.text isEqualToString:@"O"] &&
+            [self.labelSeven.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"5"]) ||
+            ([self.labelThree.text isEqualToString:@"X"] &&
+            [self.labelSeven.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"5"])
+            )
+        {
+            self.labelFive.text = @"O";
+            self.labelFive.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelSeven.text isEqualToString:@"O"] &&
+            [self.labelThree.text isEqualToString:@"3"]) ||
+            ([self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelSeven.text isEqualToString:@"X"] &&
+            [self.labelThree.text isEqualToString:@"3"])
+            )
+        {
+            self.labelThree.text = @"O";
+            self.labelThree.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelThree.text isEqualToString:@"O"] &&
+            [self.labelSix.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"9"]) ||
+            ([self.labelThree.text isEqualToString:@"X"] &&
+            [self.labelSix.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"9"])
+            )
+        {
+            self.labelNine.text = @"O";
+            self.labelNine.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelThree.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"O"] &&
+            [self.labelSix.text isEqualToString:@"6"]) ||
+            ([self.labelThree.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"X"] &&
+            [self.labelSix.text isEqualToString:@"6"])
+            )
+        {
+            self.labelSix.text = @"O";
+            self.labelSix.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelSix.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"O"] &&
+            [self.labelThree.text isEqualToString:@"3"]) ||
+            ([self.labelSix.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"X"] &&
+            [self.labelThree.text isEqualToString:@"3"])
+            )
+        {
+            self.labelThree.text = @"O";
+            self.labelThree.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelFour.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelSix.text isEqualToString:@"6"]) ||
+            ([self.labelFour.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelSix.text isEqualToString:@"6"])
+            )
+        {
+            self.labelSix.text = @"O";
+            self.labelSix.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelFour.text isEqualToString:@"O"] &&
+            [self.labelSix.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"5"]) ||
+            ([self.labelFour.text isEqualToString:@"X"] &&
+            [self.labelSix.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"5"])
+            )
+        {
+            self.labelFive.text = @"O";
+            self.labelFive.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelSix.text isEqualToString:@"O"] &&
+            [self.labelFour.text isEqualToString:@"4"]) ||
+            ([self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelSix.text isEqualToString:@"X"] &&
+            [self.labelFour.text isEqualToString:@"4"])
+            )
+        {
+            self.labelFour.text = @"O";
+            self.labelFour.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelSeven.text isEqualToString:@"O"] &&
+            [self.labelEight.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"9"]) ||
+            ([self.labelSeven.text isEqualToString:@"X"] &&
+            [self.labelEight.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"9"])
+            )
+        {
+            self.labelNine.text = @"O";
+            self.labelNine.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelSeven.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"O"] &&
+            [self.labelEight.text isEqualToString:@"8"]) ||
+            ([self.labelSeven.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"X"] &&
+            [self.labelEight.text isEqualToString:@"8"])
+            )
+        {
+            self.labelEight.text = @"O";
+            self.labelEight.textColor = [UIColor redColor];
+        }
+    else
+        if (
+            ([self.labelEight.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"O"] &&
+            [self.labelSeven.text isEqualToString:@"7"])||
+            ([self.labelEight.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"X"] &&
+            [self.labelSeven.text isEqualToString:@"7"])
+            )
+        {
+            self.labelSeven.text = @"O";
+            self.labelSeven.textColor = [UIColor redColor];
+        }
+
 }
-
-
-
-
 
 - (void)computerAI
 {
+#pragma mark first move
     if ([self.labelFive.text isEqualToString:@"5"])
     {
         self.labelFive.text = @"O";
         self.labelFive.textColor = [UIColor redColor];
-        [self checkingWinnerO];
     }
     else
-        if ([self.labelOne.text isEqualToString:@"1"])
+        if ([self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelOne.text isEqualToString:@"1"])
         {
             self.labelOne.text = @"O";
             self.labelOne.textColor = [UIColor redColor];
-            [self checkingWinnerO];
         }
-        else
-            if ([self.labelNine.text isEqualToString:@"9"])
+#pragma mark action
+    else
+        if ([self.labelOne.text isEqualToString:@"O"] &&
+            [self.labelTwo.text isEqualToString:@"O"] &&
+            [self.labelThree.text isEqualToString:@"3"])
+        {
+            self.labelThree.text = @"O";
+            self.labelThree.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelOne.text isEqualToString:@"O"] &&
+            [self.labelThree.text isEqualToString:@"O"] &&
+            [self.labelTwo.text isEqualToString:@"2"])
+        {
+            self.labelTwo.text = @"O";
+            self.labelTwo.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelTwo.text isEqualToString:@"O"] &&
+            [self.labelThree.text isEqualToString:@"O"] &&
+            [self.labelOne.text isEqualToString:@"1"])
+        {
+            self.labelOne.text = @"O";
+            self.labelOne.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelOne.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"9"])
+        {
+            self.labelNine.text = @"O";
+            self.labelNine.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelOne.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"5"])
+        {
+            self.labelFive.text = @"O";
+            self.labelFive.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"O"] &&
+            [self.labelOne.text isEqualToString:@"1"])
+        {
+            self.labelOne.text = @"O";
+            self.labelOne.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelOne.text isEqualToString:@"O"] &&
+            [self.labelFour.text isEqualToString:@"O"] &&
+            [self.labelSeven.text isEqualToString:@"7"])
+        {
+            self.labelSeven.text = @"O";
+            self.labelSeven.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelOne.text isEqualToString:@"O"] &&
+            [self.labelSeven.text isEqualToString:@"O"] &&
+            [self.labelFour.text isEqualToString:@"4"])
+        {
+            self.labelFour.text = @"O";
+            self.labelFour.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelFour.text isEqualToString:@"O"] &&
+            [self.labelSeven.text isEqualToString:@"O"] &&
+            [self.labelOne.text isEqualToString:@"1"])
+        {
+            self.labelOne.text = @"O";
+            self.labelOne.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelTwo.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelEight.text isEqualToString:@"8"])
+        {
+            self.labelEight.text = @"O";
+            self.labelEight.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelTwo.text isEqualToString:@"O"] &&
+            [self.labelEight.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"5"])
+        {
+            self.labelFive.text = @"O";
+            self.labelFive.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelEight.text isEqualToString:@"O"] &&
+            [self.labelTwo.text isEqualToString:@"2"])
+        {
+            self.labelTwo.text = @"O";
+            self.labelTwo.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelThree.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelSeven.text isEqualToString:@"7"])
+        {
+            self.labelSeven.text = @"O";
+            self.labelSeven.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelThree.text isEqualToString:@"O"] &&
+            [self.labelSeven.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"5"])
+        {
+            self.labelFive.text = @"O";
+            self.labelFive.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelSeven.text isEqualToString:@"O"] &&
+            [self.labelThree.text isEqualToString:@"3"])
+        {
+            self.labelThree.text = @"O";
+            self.labelThree.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelThree.text isEqualToString:@"O"] &&
+            [self.labelSix.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"9"])
+        {
+            self.labelNine.text = @"O";
+            self.labelNine.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelThree.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"O"] &&
+            [self.labelSix.text isEqualToString:@"6"])
+        {
+            self.labelSix.text = @"O";
+            self.labelSix.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelSix.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"O"] &&
+            [self.labelThree.text isEqualToString:@"3"])
+        {
+            self.labelThree.text = @"O";
+            self.labelThree.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelFour.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelSix.text isEqualToString:@"6"])
+        {
+            self.labelSix.text = @"O";
+            self.labelSix.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelFour.text isEqualToString:@"O"] &&
+            [self.labelSix.text isEqualToString:@"O"] &&
+            [self.labelFive.text isEqualToString:@"5"])
+        {
+            self.labelFive.text = @"O";
+            self.labelFive.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelFive.text isEqualToString:@"O"] &&
+            [self.labelSix.text isEqualToString:@"O"] &&
+            [self.labelFour.text isEqualToString:@"4"])
+        {
+            self.labelFour.text = @"O";
+            self.labelFour.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelSeven.text isEqualToString:@"O"] &&
+            [self.labelEight.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"9"])
+        {
+            self.labelNine.text = @"O";
+            self.labelNine.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelSeven.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"O"] &&
+            [self.labelEight.text isEqualToString:@"8"])
+        {
+            self.labelEight.text = @"O";
+            self.labelEight.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelEight.text isEqualToString:@"O"] &&
+            [self.labelNine.text isEqualToString:@"O"] &&
+            [self.labelSeven.text isEqualToString:@"7"])
+        {
+            self.labelSeven.text = @"O";
+            self.labelSeven.textColor = [UIColor redColor];
+        }
+#pragma mark defense
+    else
+        if ([self.labelOne.text isEqualToString:@"X"] &&
+            [self.labelTwo.text isEqualToString:@"X"] &&
+            [self.labelThree.text isEqualToString:@"3"])
+        {
+            self.labelThree.text = @"O";
+            self.labelThree.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelOne.text isEqualToString:@"X"] &&
+            [self.labelThree.text isEqualToString:@"X"] &&
+            [self.labelTwo.text isEqualToString:@"2"])
+        {
+            self.labelTwo.text = @"O";
+            self.labelTwo.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelTwo.text isEqualToString:@"X"] &&
+            [self.labelThree.text isEqualToString:@"X"] &&
+            [self.labelOne.text isEqualToString:@"1"])
+        {
+            self.labelOne.text = @"O";
+            self.labelOne.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelOne.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"9"])
+        {
+            self.labelNine.text = @"O";
+            self.labelNine.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelOne.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"5"])
+        {
+            self.labelFive.text = @"O";
+            self.labelFive.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"X"] &&
+            [self.labelOne.text isEqualToString:@"1"])
+        {
+            self.labelOne.text = @"O";
+            self.labelOne.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelOne.text isEqualToString:@"X"] &&
+            [self.labelFour.text isEqualToString:@"X"] &&
+            [self.labelSeven.text isEqualToString:@"7"])
+        {
+            self.labelSeven.text = @"O";
+            self.labelSeven.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelOne.text isEqualToString:@"X"] &&
+            [self.labelSeven.text isEqualToString:@"X"] &&
+            [self.labelFour.text isEqualToString:@"4"])
+        {
+            self.labelFour.text = @"O";
+            self.labelFour.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelFour.text isEqualToString:@"X"] &&
+            [self.labelSeven.text isEqualToString:@"X"] &&
+            [self.labelOne.text isEqualToString:@"1"])
+        {
+            self.labelOne.text = @"O";
+            self.labelOne.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelTwo.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelEight.text isEqualToString:@"8"])
+        {
+            self.labelEight.text = @"O";
+            self.labelEight.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelTwo.text isEqualToString:@"X"] &&
+            [self.labelEight.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"5"])
+        {
+            self.labelFive.text = @"O";
+            self.labelFive.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelEight.text isEqualToString:@"X"] &&
+            [self.labelTwo.text isEqualToString:@"2"])
+        {
+            self.labelTwo.text = @"O";
+            self.labelTwo.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelThree.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelSeven.text isEqualToString:@"7"])
+        {
+            self.labelSeven.text = @"O";
+            self.labelSeven.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelThree.text isEqualToString:@"X"] &&
+            [self.labelSeven.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"5"])
+        {
+            self.labelFive.text = @"O";
+            self.labelFive.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelSeven.text isEqualToString:@"X"] &&
+            [self.labelThree.text isEqualToString:@"3"])
+        {
+            self.labelThree.text = @"O";
+            self.labelThree.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelThree.text isEqualToString:@"X"] &&
+            [self.labelSix.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"9"])
+        {
+            self.labelNine.text = @"O";
+            self.labelNine.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelThree.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"X"] &&
+            [self.labelSix.text isEqualToString:@"6"])
+        {
+            self.labelSix.text = @"O";
+            self.labelSix.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelSix.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"X"] &&
+            [self.labelThree.text isEqualToString:@"3"])
+        {
+            self.labelThree.text = @"O";
+            self.labelThree.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelFour.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelSix.text isEqualToString:@"6"])
+        {
+            self.labelSix.text = @"O";
+            self.labelSix.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelFour.text isEqualToString:@"X"] &&
+            [self.labelSix.text isEqualToString:@"X"] &&
+            [self.labelFive.text isEqualToString:@"5"])
+        {
+            self.labelFive.text = @"O";
+            self.labelFive.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelSix.text isEqualToString:@"X"] &&
+            [self.labelFour.text isEqualToString:@"4"])
+        {
+            self.labelFour.text = @"O";
+            self.labelFour.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelSeven.text isEqualToString:@"X"] &&
+            [self.labelEight.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"9"])
+        {
+            self.labelNine.text = @"O";
+            self.labelNine.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelSeven.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"X"] &&
+            [self.labelEight.text isEqualToString:@"8"])
+        {
+            self.labelEight.text = @"O";
+            self.labelEight.textColor = [UIColor redColor];
+        }
+    else
+        if ([self.labelEight.text isEqualToString:@"X"] &&
+            [self.labelNine.text isEqualToString:@"X"] &&
+            [self.labelSeven.text isEqualToString:@"7"])
+        {
+            self.labelSeven.text = @"O";
+            self.labelSeven.textColor = [UIColor redColor];
+        }
+#pragma mark second move
+    else
+        if ([self.labelFive.text isEqualToString:@"O"])
+        {
+            [self defense];
+            if ([self.labelOne.text isEqualToString:@"X"] &&
+                [self.labelSix.text isEqualToString:@"6"])
             {
-                self.labelNine.text = @"O";
-                self.labelNine.textColor = [UIColor redColor];
-                [self checkingWinnerO];
+                self.labelSix.text = @"O";
+                self.labelSix.textColor = [UIColor redColor];
             }
-//            else
-//                if ([self.labelNine.text isEqualToString:@"9"])
-//                {
-//                    self.labelNine.text = @"O";
-//                    self.labelNine.textColor = [UIColor redColor];
-//                    [self checkingWinnerO];
-//                }
-//                else
-//                    if ([self.labelNine.text isEqualToString:@"9"])
-//                    {
-//                        self.labelNine.text = @"O";
-//                        self.labelNine.textColor = [UIColor redColor];
-//                        [self checkingWinnerO];
-//                    }
-//                    else
-//                        if ([self.labelNine.text isEqualToString:@"9"])
-//                        {
-//                            self.labelNine.text = @"O";
-//                            self.labelNine.textColor = [UIColor redColor];
-//                            [self checkingWinnerO];
-//                        }
-//                        else
-//                            if ([self.labelNine.text isEqualToString:@"9"])
-//                            {
-//                                self.labelNine.text = @"O";
-//                                self.labelNine.textColor = [UIColor redColor];
-//                                [self checkingWinnerO];
-//                            }
-//                            else
-//                                if ([self.labelNine.text isEqualToString:@"9"])
-//                                {
-//                                    self.labelNine.text = @"O";
-//                                    self.labelNine.textColor = [UIColor redColor];
-//                                    [self checkingWinnerO];
-//                                }
+            else
+                if ([self.labelOne.text isEqualToString:@"X"] &&
+                    [self.labelEight.text isEqualToString:@"8"])
+                {
+                    self.labelEight.text = @"O";
+                    self.labelEight.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelThree.text isEqualToString:@"X"] &&
+                    [self.labelFour.text isEqualToString:@"4"])
+                {
+                    self.labelFour.text = @"O";
+                    self.labelFour.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelThree.text isEqualToString:@"X"] &&
+                    [self.labelEight.text isEqualToString:@"8"])
+                {
+                    self.labelEight.text = @"O";
+                    self.labelEight.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelSeven.text isEqualToString:@"X"] &&
+                    [self.labelTwo.text isEqualToString:@"2"])
+                {
+                    self.labelTwo.text = @"O";
+                    self.labelTwo.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelSeven.text isEqualToString:@"X"] &&
+                    [self.labelSix.text isEqualToString:@"6"])
+                {
+                    self.labelSix.text = @"O";
+                    self.labelSix.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelNine.text isEqualToString:@"X"] &&
+                    [self.labelTwo.text isEqualToString:@"2"])
+                {
+                    self.labelTwo.text = @"O";
+                    self.labelTwo.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelNine.text isEqualToString:@"X"] &&
+                    [self.labelFour.text isEqualToString:@"4"])
+                {
+                    self.labelFour.text = @"O";
+                    self.labelFour.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelTwo.text isEqualToString:@"X"] &&
+                    [self.labelFour.text isEqualToString:@"X"] &&
+                    [self.labelOne.text isEqualToString:@"1"])
+                {
+                    self.labelOne.text = @"O";
+                    self.labelOne.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelTwo.text isEqualToString:@"X"] &&
+                    [self.labelSix.text isEqualToString:@"X"] &&
+                    [self.labelThree.text isEqualToString:@"3"])
+                {
+                    self.labelThree.text = @"O";
+                    self.labelThree.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelTwo.text isEqualToString:@"X"] &&
+                    [self.labelSeven.text isEqualToString:@"X"] &&
+                    [self.labelNine.text isEqualToString:@"9"])
+                {
+                    self.labelNine.text = @"O";
+                    self.labelNine.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelTwo.text isEqualToString:@"X"] &&
+                    [self.labelNine.text isEqualToString:@"X"] &&
+                    [self.labelSeven.text isEqualToString:@"7"])
+                {
+                    self.labelSeven.text = @"O";
+                    self.labelSeven.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelFour.text isEqualToString:@"X"] &&
+                    [self.labelEight.text isEqualToString:@"X"] &&
+                    [self.labelSeven.text isEqualToString:@"7"])
+                {
+                    self.labelSeven.text = @"O";
+                    self.labelSeven.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelFour.text isEqualToString:@"X"] &&
+                    [self.labelThree.text isEqualToString:@"X"] &&
+                    [self.labelNine.text isEqualToString:@"9"])
+                {
+                    self.labelNine.text = @"O";
+                    self.labelNine.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelFour.text isEqualToString:@"X"] &&
+                    [self.labelNine.text isEqualToString:@"X"] &&
+                    [self.labelThree.text isEqualToString:@"3"])
+                {
+                    self.labelThree.text = @"O";
+                    self.labelThree.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelSix.text isEqualToString:@"X"] &&
+                    [self.labelEight.text isEqualToString:@"X"] &&
+                    [self.labelNine.text isEqualToString:@"9"])
+                {
+                    self.labelNine.text = @"O";
+                    self.labelNine.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelSix.text isEqualToString:@"X"] &&
+                    [self.labelOne.text isEqualToString:@"X"] &&
+                    [self.labelSeven.text isEqualToString:@"7"])
+                {
+                    self.labelSeven.text = @"O";
+                    self.labelSeven.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelSix.text isEqualToString:@"X"] &&
+                    [self.labelSeven.text isEqualToString:@"X"] &&
+                    [self.labelOne.text isEqualToString:@"1"])
+                {
+                    self.labelOne.text = @"O";
+                    self.labelOne.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelEight.text isEqualToString:@"X"] &&
+                    [self.labelOne.text isEqualToString:@"X"] &&
+                    [self.labelThree.text isEqualToString:@"3"])
+                {
+                    self.labelThree.text = @"O";
+                    self.labelThree.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelEight.text isEqualToString:@"X"] &&
+                    [self.labelThree.text isEqualToString:@"X"] &&
+                    [self.labelOne.text isEqualToString:@"1"])
+                {
+                    self.labelOne.text = @"O";
+                    self.labelOne.textColor = [UIColor redColor];
+                }
+            else
+                if ([self.labelOne.text isEqualToString:@"1"])
+                {
+                    self.labelOne.text = @"O";
+                    self.labelOne.textColor = [UIColor redColor];
+                }
+        }
+    else
+        if ([self.labelFive.text isEqualToString:@"X"] &&
+            [self.labelOne.text isEqualToString:@"O"])
+        {
+            [self defense];
+            if ([self.labelNine.text isEqualToString:@"X"] &&
+                [self.labelSeven.text isEqualToString:@"7"])
+            {
+                self.labelSeven.text = @"O";
+                self.labelSeven.textColor = [UIColor redColor];
+            }
+            else
+                if ([self.labelNine.text isEqualToString:@"X"] &&
+                    [self.labelThree.text isEqualToString:@"3"])
+                {
+                    self.labelThree.text = @"O";
+                    self.labelThree.textColor = [UIColor redColor];
+                }
+        }
+    [self checkingWinnerO];
+    [self xTurn];
 }
 
 - (void)xTurn
@@ -520,6 +1310,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     [self stopTime];
+    [self resetLabel];
     self.navigationItem.title = [NSString stringWithFormat:@"Tic Tac Toe Challenge"];
 }
 
