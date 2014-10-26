@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2Z-GM-c3q">
-                                <rect key="frame" x="36" y="70" width="50" height="50"/>
+                                <rect key="frame" x="66" y="70" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="FRO-kY-kjg"/>
@@ -29,7 +29,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cn-ds-iqk">
-                                <rect key="frame" x="234" y="70" width="50" height="50"/>
+                                <rect key="frame" x="204" y="70" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="NXO-K7-beX"/>
@@ -40,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMM-WA-43J">
-                                <rect key="frame" x="36" y="150" width="50" height="50"/>
+                                <rect key="frame" x="66" y="130" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="BLH-M9-P9T"/>
@@ -51,7 +51,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIT-0T-B5Q">
-                                <rect key="frame" x="135" y="150" width="50" height="50"/>
+                                <rect key="frame" x="135" y="130" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="7GD-y1-dLb"/>
@@ -62,7 +62,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qje-e4-ItV">
-                                <rect key="frame" x="36" y="230" width="50" height="50"/>
+                                <rect key="frame" x="66" y="190" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="53Q-kV-kX6"/>
@@ -73,7 +73,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNH-gF-9he">
-                                <rect key="frame" x="135" y="230" width="50" height="50"/>
+                                <rect key="frame" x="135" y="190" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="5y0-RM-KwB"/>
@@ -84,7 +84,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBa-46-7CZ">
-                                <rect key="frame" x="234" y="230" width="50" height="50"/>
+                                <rect key="frame" x="204" y="190" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Gpj-2G-qQv"/>
@@ -106,7 +106,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XG-uz-scg">
-                                <rect key="frame" x="234" y="150" width="50" height="50"/>
+                                <rect key="frame" x="204" y="130" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="JCh-cC-FUO"/>
@@ -117,7 +117,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKn-aA-kD6">
-                                <rect key="frame" x="135" y="310" width="50" height="50"/>
+                                <rect key="frame" x="135" y="250" width="50" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Zga-M6-dxW"/>
@@ -133,23 +133,23 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="KMM-WA-43J" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="1kr-aT-X8R"/>
-                            <constraint firstItem="qje-e4-ItV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="1nr-Yu-6Om"/>
-                            <constraint firstItem="8XG-uz-scg" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="150" id="291-fB-EdO"/>
+                            <constraint firstItem="KMM-WA-43J" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="50" id="1kr-aT-X8R"/>
+                            <constraint firstItem="qje-e4-ItV" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="50" id="1nr-Yu-6Om"/>
+                            <constraint firstItem="8XG-uz-scg" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="130" id="291-fB-EdO"/>
                             <constraint firstItem="d2Z-GM-c3q" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="70" id="5GC-fA-avC"/>
-                            <constraint firstItem="KMM-WA-43J" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="150" id="8hC-HG-LKf"/>
+                            <constraint firstItem="KMM-WA-43J" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="130" id="8hC-HG-LKf"/>
                             <constraint firstItem="We5-fu-igl" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="70" id="Cj1-Eh-WeS"/>
-                            <constraint firstItem="QIT-0T-B5Q" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="150" id="DTh-Zo-B6g"/>
+                            <constraint firstItem="QIT-0T-B5Q" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="130" id="DTh-Zo-B6g"/>
                             <constraint firstAttribute="centerX" secondItem="QIT-0T-B5Q" secondAttribute="centerX" id="QA5-vg-WKC"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6cn-ds-iqk" secondAttribute="trailing" constant="20" id="RFo-SL-GtQ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="8XG-uz-scg" secondAttribute="trailing" constant="20" id="SgF-mC-6fm"/>
-                            <constraint firstItem="d2Z-GM-c3q" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="W8h-Pl-Qet"/>
-                            <constraint firstItem="xBa-46-7CZ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="230" id="hf1-u9-lpI"/>
-                            <constraint firstItem="qje-e4-ItV" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="230" id="jYA-k7-RCE"/>
-                            <constraint firstItem="cKn-aA-kD6" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="310" id="k68-Dg-gfF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6cn-ds-iqk" secondAttribute="trailing" constant="50" id="RFo-SL-GtQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8XG-uz-scg" secondAttribute="trailing" constant="50" id="SgF-mC-6fm"/>
+                            <constraint firstItem="d2Z-GM-c3q" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="50" id="W8h-Pl-Qet"/>
+                            <constraint firstItem="xBa-46-7CZ" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="190" id="hf1-u9-lpI"/>
+                            <constraint firstItem="qje-e4-ItV" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="190" id="jYA-k7-RCE"/>
+                            <constraint firstItem="cKn-aA-kD6" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="250" id="k68-Dg-gfF"/>
                             <constraint firstItem="6cn-ds-iqk" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="70" id="oEA-7x-qMr"/>
-                            <constraint firstItem="uNH-gF-9he" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="230" id="pRT-zd-DY2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="xBa-46-7CZ" secondAttribute="trailing" constant="20" id="qrG-Wz-dUQ"/>
+                            <constraint firstItem="uNH-gF-9he" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" constant="190" id="pRT-zd-DY2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xBa-46-7CZ" secondAttribute="trailing" constant="50" id="qrG-Wz-dUQ"/>
                             <constraint firstAttribute="centerX" secondItem="We5-fu-igl" secondAttribute="centerX" id="slH-tE-OKT"/>
                             <constraint firstAttribute="centerX" secondItem="cKn-aA-kD6" secondAttribute="centerX" id="vjD-td-mdX"/>
                             <constraint firstAttribute="centerX" secondItem="uNH-gF-9he" secondAttribute="centerX" id="zR5-xi-aSS"/>
@@ -160,6 +160,7 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Tic Tac Toe Challenge" id="jvV-q6-5Tn">
+                        <barButtonItem key="leftBarButtonItem" title="Time" id="ouM-kf-doe"/>
                         <barButtonItem key="rightBarButtonItem" title="Help" id="vdi-53-sFo">
                             <connections>
                                 <segue destination="qgF-u3-EH3" kind="push" id="fW9-eg-Ws6"/>
@@ -176,6 +177,7 @@
                         <outlet property="labelSix" destination="8XG-uz-scg" id="e3C-fr-iw8"/>
                         <outlet property="labelThree" destination="6cn-ds-iqk" id="c8V-zX-3GA"/>
                         <outlet property="labelTwo" destination="We5-fu-igl" id="FKH-Ha-o0N"/>
+                        <outlet property="timeButton" destination="ouM-kf-doe" id="sfe-oi-vct"/>
                         <outlet property="whichPlayerLabel" destination="cKn-aA-kD6" id="zya-wo-FcE"/>
                     </connections>
                 </viewController>
