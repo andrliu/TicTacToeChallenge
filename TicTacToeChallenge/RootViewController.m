@@ -26,6 +26,15 @@
 @property (nonatomic) NSInteger timing;
 @property (nonatomic) CGPoint originalPlayerLabelCenter;
 @property (nonatomic) CGPoint touchPoint;
+@property (strong, nonatomic) NSArray *array123;
+@property (strong, nonatomic) NSArray *array147;
+@property (strong, nonatomic) NSArray *array159;
+@property (strong, nonatomic) NSArray *array357;
+@property (strong, nonatomic) NSArray *array369;
+@property (strong, nonatomic) NSArray *array258;
+@property (strong, nonatomic) NSArray *array456;
+@property (strong, nonatomic) NSArray *array789;
+@property (strong, nonatomic) NSArray *array;
 
 @end
 
@@ -36,28 +45,41 @@
     [super viewDidLoad];
     [self startSign];
     self.originalPlayerLabelCenter = self.whichPlayerLabel.center;
+    self.array123 = [[NSArray alloc]initWithObjects:self.labelOne, self.labelTwo, self.labelThree, nil];
+    self.array147 = [[NSArray alloc]initWithObjects:self.labelOne, self.labelFour, self.labelSeven, nil];
+    self.array159 = [[NSArray alloc]initWithObjects:self.labelOne, self.labelFive, self.labelNine, nil];
+    self.array357 = [[NSArray alloc]initWithObjects:self.labelThree, self.labelFive, self.labelSeven, nil];
+    self.array369 = [[NSArray alloc]initWithObjects:self.labelThree, self.labelSix, self.labelNine, nil];
+    self.array258 = [[NSArray alloc]initWithObjects:self.labelTwo, self.labelFive, self.labelEight, nil];
+    self.array456 = [[NSArray alloc]initWithObjects:self.labelFour, self.labelFive, self.labelSix, nil];
+    self.array789 = [[NSArray alloc]initWithObjects:self.labelSeven, self.labelEight, self.labelNine, nil];
+    self.array = [[NSArray alloc]initWithObjects:self.array123,self.array147,self.array159,self.array258,self.array357,self.array369,self.array456,self.array789,nil];
 }
 
+//welcome alert
 - (void)startSign
 {
     UIAlertController *startSign = [UIAlertController alertControllerWithTitle:@"" message: @"Welcome Tic, Tac, Toe Challenge" preferredStyle:UIAlertControllerStyleAlert];
+    //pvp option
     UIAlertAction *startButton = [UIAlertAction actionWithTitle:@"Player VS Player" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
                                   {
                                       self.navigationItem.title = [NSString stringWithFormat:@"Battle Begin"];
                                       [self startTime];
                                   }
                                   ];
+    //ai option
     [startSign addAction:startButton];
     UIAlertAction *challengeButton = [UIAlertAction actionWithTitle:@"Player VS Computer" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
                                       {
-                                        self.navigationItem.title = [NSString stringWithFormat:@"Challenge Accpeted"];
-                                        [self startTime];
+                                          self.navigationItem.title = [NSString stringWithFormat:@"Challenge Accpeted"];
+                                          [self startTime];
                                     }
                                     ];
     [startSign addAction:challengeButton];
     [self presentViewController: startSign animated:YES completion:nil];
 }
 
+//set up timer
 - (void)startTime
 {
     NSInteger time = kTime;
@@ -71,6 +93,7 @@
     [self.timer invalidate];
 }
 
+//set up startTime method to countdown and reset
 - (void)countDown
 {
     if (self.timing > 0)
@@ -86,43 +109,37 @@
     }
 }
 
-- (void)playerTimeOut
-{
-    if ([self.whichPlayerLabel.text isEqualToString:@"Player"]||
-        [self.whichPlayerLabel.text isEqualToString:@"X"])
-    {
-        [self oTurn];
-    }
-    else
-        if ([self.whichPlayerLabel.text isEqualToString:@"O"])
-        {
-            [self xTurn];
-        }
-}
-
-
-- (void)playerTimeOutComputer
-{
-    if ([self.whichPlayerLabel.text isEqualToString:@"Player"]||
-        [self.whichPlayerLabel.text isEqualToString:@"X"])
-    {
-        [self oTurn];
-        [self computerAI];
-    }
-}
-
+//create timeOut system to switch players
 - (void)timeOut
 {
-    if ([self.navigationItem.title isEqualToString:@"Battle Begin"]) {
-        [self playerTimeOut];
+    //timeOut and switch to the other player
+    if ([self.navigationItem.title isEqualToString:@"Battle Begin"])
+    {
+        if ([self.whichPlayerLabel.text isEqualToString:@"Player"]||
+            [self.whichPlayerLabel.text isEqualToString:@"X"])
+        {
+            [self oTurn];
+        }
+        else
+            if ([self.whichPlayerLabel.text isEqualToString:@"O"])
+            {
+                [self xTurn];
+            }
     }
+    //timeOut and switch to computer
     else
-        if ([self.navigationItem.title isEqualToString:@"Challenge Accpeted"]) {
-            [self playerTimeOutComputer];
+        if ([self.navigationItem.title isEqualToString:@"Challenge Accpeted"])
+        {
+            if ([self.whichPlayerLabel.text isEqualToString:@"Player"]||
+                [self.whichPlayerLabel.text isEqualToString:@"X"])
+            {
+                [self oTurn];
+                [self computerAI];
+            }
         }
 }
 
-
+//assign self.label with corresponding self.label#
 - (UILabel *)findLabelUsingPoint:(CGPoint)point
 {
     if (CGRectContainsPoint(self.labelOne.frame, point))
@@ -172,6 +189,7 @@
     return nil;
 }
 
+//return string with winner symbol
 - (NSString *)whoWon
 {
     if ([self.labelOne.text isEqualToString: self.labelTwo.text] &&
@@ -237,6 +255,7 @@
     return nil;
 }
 
+//check winner and apply to switch method
 - (void)checkingWinnerX
 {
     if ([[self whoWon] isEqualToString: @"X"] ||
@@ -251,6 +270,7 @@
     }
 }
 
+//check winner and apply to switch method
 - (void)checkingWinnerO
 {
     if ([[self whoWon] isEqualToString: @"X"] ||
@@ -265,6 +285,7 @@
     }
 }
 
+//winning msg
 - (NSString *)resultMessage
 {
     if ([[self whoWon] isEqualToString: @"X"] ||
@@ -276,18 +297,20 @@
     else
         if ([[self whoWon] isEqualToString: @"draw"])
         {
-            return [NSString stringWithFormat:@"GG"];
+            return [NSString stringWithFormat:@"Good Game"];
         }
     return nil;
 }
 
+//gameover alert
 - (void)alert
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message: [self resultMessage] preferredStyle:UIAlertControllerStyleAlert];
+    //restart option
     UIAlertAction *restartButton = [UIAlertAction actionWithTitle:@"Restart" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action)
                                     {
-                                        [self resetLabel];
                                         [self stopTime];
+                                        [self resetLabel];
                                         [self startTime];
                                     }
                                     ];
@@ -295,6 +318,7 @@
     [self presentViewController: alert animated:YES completion:nil];
 }
 
+//reset all labels and buttons
 - (void)resetLabel
 {
     self.whichPlayerLabel.text      = @"Player";
@@ -902,81 +926,77 @@
                 }
         }
     [self checkingWinnerO];
-    [self xTurn];
 }
 
+//assign self.whichPlayerLabel with X and apply to checking method and timeOut system
 - (void)xTurn
 {
     self.whichPlayerLabel.text = @"X";
     self.whichPlayerLabel.textColor = [UIColor blueColor];
 }
 
+//assign self.whichPlayerLabel with Oand apply to checking method and timeOut system
 - (void)oTurn
 {
     self.whichPlayerLabel.text = @"O";
     self.whichPlayerLabel.textColor = [UIColor redColor];
 }
 
+//mark self.label with corresponding player
 - (void)mark
 {
     self.label.text = self.whichPlayerLabel.text;
     self.label.textColor = self.whichPlayerLabel.textColor;
 }
 
-- (void)switchPlayer
-{
-    if ([self.label.text isEqualToString:@"X"] ||
-        [self.label.text isEqualToString:@"O"])
-    {
-        nil;
-    }
-    else
-    {
-        if ([self.whichPlayerLabel.text isEqualToString: @"Player"] ||
-            [self.whichPlayerLabel.text isEqualToString: @"X"])
-        {
-            self.label.text = @"X";
-            self.label.textColor = [UIColor blueColor];
-            [self checkingWinnerX];
-        }
-        else
-            if ([self.whichPlayerLabel.text isEqualToString: @"O"])
-            {
-                [self mark];
-                [self checkingWinnerO];
-            }
-    }
-}
-
-- (void)switchCompupter
-{
-    if ([self.label.text isEqualToString:@"X"] ||
-        [self.label.text isEqualToString:@"O"])
-    {
-        nil;
-    }
-    else
-        if ([self.whichPlayerLabel.text isEqualToString: @"Player"] ||
-            [self.whichPlayerLabel.text isEqualToString: @"X"])
-        {
-            self.label.text = @"X";
-            self.label.textColor = [UIColor blueColor];
-            [self checkingWinnerX];
-            [self computerAI];
-        }
-}
-
+//end of gesture and switch players
 - (void)swtich
 {
+//switch to the other player
     if ([self.navigationItem.title isEqualToString:@"Battle Begin"]) {
-        [self switchPlayer];
+        if ([self.label.text isEqualToString:@"X"] ||
+            [self.label.text isEqualToString:@"O"])
+        {
+            nil;
+        }
+        else
+        {
+            if ([self.whichPlayerLabel.text isEqualToString: @"Player"] ||
+                [self.whichPlayerLabel.text isEqualToString: @"X"])
+            {
+                self.label.text = @"X";
+                self.label.textColor = [UIColor blueColor];
+                [self checkingWinnerX];
+            }
+            else
+                if ([self.whichPlayerLabel.text isEqualToString: @"O"])
+                {
+                    [self mark];
+                    [self checkingWinnerO];
+                }
+        }
     }
+//switch to computer
     else
         if ([self.navigationItem.title isEqualToString:@"Challenge Accpeted"]) {
-            [self switchCompupter];
+            if ([self.label.text isEqualToString:@"X"] ||
+                [self.label.text isEqualToString:@"O"])
+            {
+                nil;
+            }
+            else
+                if ([self.whichPlayerLabel.text isEqualToString: @"Player"] ||
+                    [self.whichPlayerLabel.text isEqualToString: @"X"])
+                {
+                    self.label.text = @"X";
+                    self.label.textColor = [UIColor blueColor];
+                    [self checkingWinnerX];
+                    [self computerAI];
+                }
         }
 }
 
+//assign X or O by tapGesture
 - (IBAction)onLabelTapped:(UITapGestureRecognizer *)gesture
 {
     self.touchPoint = [gesture locationInView:self.view];
@@ -989,14 +1009,16 @@
     }
 }
 
+//self.whichPlayerLabel moving animation
 - (void)panGestureAnimation
 {
-    [UIView animateWithDuration:0 animations:^
+    [UIView animateWithDuration:1.0 animations:^
      {
          self.whichPlayerLabel.center = self.originalPlayerLabelCenter;
      }];
 }
 
+//assign X or O by panGesture
 - (IBAction)onLabelPanned:(UIPanGestureRecognizer *)gesture
 {
     self.touchPoint = [gesture locationInView:self.view];
@@ -1017,6 +1039,7 @@
     }
 }
 
+//move to webview and reset the game at the same time
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     [self stopTime];
