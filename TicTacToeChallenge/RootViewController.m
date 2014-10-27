@@ -346,6 +346,68 @@
 
 - (void)computerAI
 {
+
+//    int i = 0;
+//    for (self.array[i]; i <= 8; i++)
+//    {
+//        if ([[self.array[i][0] text] isEqualToString:@"O"] &&
+//            [[self.array[i][1] text] isEqualToString:@"O"] &&
+//            ![[self.array[i][2] text] isEqualToString:@"X"] &&
+//            ![[self.array[i][2] text] isEqualToString:@"O"])
+//        {
+//            [[self.array[i][2] text] isEqualToString:@"O"];
+//            [[self.array[i][2] color] isEqual:[UIColor redColor]];
+//        }
+//        else
+//            if ([[self.array[i][0] text] isEqualToString:@"O"] &&
+//                [[self.array[i][2] text] isEqualToString:@"O"] &&
+//                ![[self.array[i][1] text] isEqualToString:@"X"] &&
+//                ![[self.array[i][1] text] isEqualToString:@"O"])
+//            {
+//                [[self.array[i][1] text] isEqualToString:@"O"];
+//                [[self.array[i][1] color] isEqual:[UIColor redColor]];
+//            }
+//            else
+//                if ([[self.array[i][1] text] isEqualToString:@"O"] &&
+//                    [[self.array[i][2] text] isEqualToString:@"O"] &&
+//                    ![[self.array[i][0] text] isEqualToString:@"X"] &&
+//                    ![[self.array[i][0] text] isEqualToString:@"O"])
+//                {
+//                    [[self.array[i][0] text] isEqualToString:@"O"];
+//                    [[self.array[i][0] color] isEqual:[UIColor redColor]];
+//                }
+//                else
+//                    if ([[self.array[i][0] text] isEqualToString:@"X"] &&
+//                        [[self.array[i][2] text] isEqualToString:@"X"] &&
+//                        ![[self.array[i][1] text] isEqualToString:@"X"] &&
+//                        ![[self.array[i][1] text] isEqualToString:@"O"])
+//                    {
+//                        [[self.array[i][1] text] isEqualToString:@"O"];
+//                        [[self.array[i][1] color] isEqual:[UIColor redColor]];
+//                    }
+//                    else
+//                        if ([[self.array[i][1] text] isEqualToString:@"X"] &&
+//                            [[self.array[i][2] text] isEqualToString:@"X"] &&
+//                            ![[self.array[i][0] text] isEqualToString:@"X"] &&
+//                            ![[self.array[i][0] text] isEqualToString:@"O"])
+//                        {
+//                            [[self.array[i][0] text] isEqualToString:@"O"];
+//                            [[self.array[i][0] color] isEqual:[UIColor redColor]];
+//                        }
+//                        else
+//                            if ([[self.array[i][0] text] isEqualToString:@"X"] &&
+//                                [[self.array[i][2] text] isEqualToString:@"X"] &&
+//                                ![[self.array[i][1] text] isEqualToString:@"X"] &&
+//                                ![[self.array[i][1] text] isEqualToString:@"O"])
+//                            {
+//                                [[self.array[i][1] text] isEqualToString:@"O"];
+//                                [[self.array[i][1] color] isEqual:[UIColor redColor]];
+//                            }
+//    }
+
+
+
+
 #pragma mark first move
     if ([self.labelFive.text isEqualToString:@"5"])
     {
