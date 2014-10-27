@@ -26,15 +26,6 @@
 @property (nonatomic) NSInteger timing;
 @property (nonatomic) CGPoint originalPlayerLabelCenter;
 @property (nonatomic) CGPoint touchPoint;
-@property (strong, nonatomic) NSArray *array123;
-@property (strong, nonatomic) NSArray *array147;
-@property (strong, nonatomic) NSArray *array159;
-@property (strong, nonatomic) NSArray *array357;
-@property (strong, nonatomic) NSArray *array369;
-@property (strong, nonatomic) NSArray *array258;
-@property (strong, nonatomic) NSArray *array456;
-@property (strong, nonatomic) NSArray *array789;
-@property (strong, nonatomic) NSArray *array;
 
 @end
 
@@ -45,15 +36,6 @@
     [super viewDidLoad];
     [self startSign];
     self.originalPlayerLabelCenter = self.whichPlayerLabel.center;
-    self.array123 = [[NSArray alloc]initWithObjects:self.labelOne, self.labelTwo, self.labelThree, nil];
-    self.array147 = [[NSArray alloc]initWithObjects:self.labelOne, self.labelFour, self.labelSeven, nil];
-    self.array159 = [[NSArray alloc]initWithObjects:self.labelOne, self.labelFive, self.labelNine, nil];
-    self.array357 = [[NSArray alloc]initWithObjects:self.labelThree, self.labelFive, self.labelSeven, nil];
-    self.array369 = [[NSArray alloc]initWithObjects:self.labelThree, self.labelSix, self.labelNine, nil];
-    self.array258 = [[NSArray alloc]initWithObjects:self.labelTwo, self.labelFive, self.labelEight, nil];
-    self.array456 = [[NSArray alloc]initWithObjects:self.labelFour, self.labelFive, self.labelSix, nil];
-    self.array789 = [[NSArray alloc]initWithObjects:self.labelSeven, self.labelEight, self.labelNine, nil];
-    self.array = [[NSArray alloc]initWithObjects:self.array123,self.array147,self.array159,self.array258,self.array357,self.array369,self.array456,self.array789,nil];
 }
 
 //welcome alert
@@ -151,41 +133,41 @@
         {
             return self.labelTwo;
         }
-        else
-            if (CGRectContainsPoint(self.labelThree.frame, point))
-            {
-                return self.labelThree;
-            }
-            else
-                if (CGRectContainsPoint(self.labelFour.frame, point))
-                {
-                    return self.labelFour;
-                }
-                else
-                    if (CGRectContainsPoint(self.labelFive.frame, point))
-                    {
-                        return self.labelFive;
-                    }
-                    else
-                        if (CGRectContainsPoint(self.labelSix.frame, point))
-                        {
-                            return self.labelSix;
-                        }
-                        else
-                            if (CGRectContainsPoint(self.labelSeven.frame, point))
-                            {
-                                return self.labelSeven;
-                            }
-                            else
-                                if (CGRectContainsPoint(self.labelEight.frame, point))
-                                {
-                                    return self.labelEight;
-                                }
-                                else
-                                    if (CGRectContainsPoint(self.labelNine.frame, point))
-                                    {
-                                        return self.labelNine;
-                                    }
+    else
+        if (CGRectContainsPoint(self.labelThree.frame, point))
+        {
+            return self.labelThree;
+        }
+    else
+        if (CGRectContainsPoint(self.labelFour.frame, point))
+        {
+            return self.labelFour;
+        }
+    else
+        if (CGRectContainsPoint(self.labelFive.frame, point))
+        {
+            return self.labelFive;
+        }
+    else
+        if (CGRectContainsPoint(self.labelSix.frame, point))
+        {
+            return self.labelSix;
+        }
+    else
+        if (CGRectContainsPoint(self.labelSeven.frame, point))
+        {
+            return self.labelSeven;
+        }
+    else
+        if (CGRectContainsPoint(self.labelEight.frame, point))
+        {
+            return self.labelEight;
+        }
+    else
+        if (CGRectContainsPoint(self.labelNine.frame, point))
+        {
+            return self.labelNine;
+        }
     return nil;
 }
 
@@ -203,55 +185,55 @@
         {
             return self.labelOne.text;
         }
-        else
-            if ([self.labelOne.text isEqualToString: self.labelFour.text] &&
-                [self.labelOne.text isEqualToString: self.labelSeven.text ])
-            {
-                return self.labelOne.text;
-            }
-            else
-                if ([self.labelTwo.text isEqualToString: self.labelFive.text] &&
-                    [self.labelTwo.text isEqualToString: self.labelEight.text])
-                {
-                    return self.labelTwo.text;
-                }
-                else
-                    if ([self.labelThree.text isEqualToString: self.labelFive.text] &&
-                        [self.labelThree.text isEqualToString: self.labelSeven.text])
-                    {
-                        return self.labelThree.text;
-                    }
-                    else
-                        if ([self.labelThree.text isEqualToString: self.labelSix.text] &&
-                            [self.labelThree.text isEqualToString: self.labelNine.text])
-                        {
-                            return self.labelThree.text;
-                        }
-                        else
-                            if ([self.labelFour.text isEqualToString: self.labelFive.text] &&
-                                [self.labelFour.text isEqualToString: self.labelSix.text])
-                            {
-                                return self.labelFour.text;
-                            }
-                            else
-                                if ([self.labelSeven.text isEqualToString: self.labelEight.text] &&
-                                    [self.labelSeven.text isEqualToString: self.labelNine.text])
-                                {
-                                    return self.labelSeven.text;
-                                }
-                                else
-                                    if (![self.labelOne.text     isEqualToString: @"1"] &&
-                                        ![self.labelTwo.text     isEqualToString: @"2"] &&
-                                        ![self.labelThree.text   isEqualToString: @"3"] &&
-                                        ![self.labelFour.text    isEqualToString: @"4"] &&
-                                        ![self.labelFive.text    isEqualToString: @"5"] &&
-                                        ![self.labelSix.text     isEqualToString: @"6"] &&
-                                        ![self.labelSeven.text   isEqualToString: @"7"] &&
-                                        ![self.labelEight.text   isEqualToString: @"8"] &&
-                                        ![self.labelNine.text    isEqualToString: @"9"])
-                                    {
-                                        return @"draw";
-                                    }
+    else
+        if ([self.labelOne.text isEqualToString: self.labelFour.text] &&
+            [self.labelOne.text isEqualToString: self.labelSeven.text ])
+        {
+            return self.labelOne.text;
+        }
+    else
+        if ([self.labelTwo.text isEqualToString: self.labelFive.text] &&
+            [self.labelTwo.text isEqualToString: self.labelEight.text])
+        {
+            return self.labelTwo.text;
+        }
+    else
+        if ([self.labelThree.text isEqualToString: self.labelFive.text] &&
+            [self.labelThree.text isEqualToString: self.labelSeven.text])
+        {
+            return self.labelThree.text;
+        }
+    else
+        if ([self.labelThree.text isEqualToString: self.labelSix.text] &&
+            [self.labelThree.text isEqualToString: self.labelNine.text])
+        {
+            return self.labelThree.text;
+        }
+    else
+        if ([self.labelFour.text isEqualToString: self.labelFive.text] &&
+            [self.labelFour.text isEqualToString: self.labelSix.text])
+        {
+            return self.labelFour.text;
+        }
+    else
+        if ([self.labelSeven.text isEqualToString: self.labelEight.text] &&
+            [self.labelSeven.text isEqualToString: self.labelNine.text])
+        {
+            return self.labelSeven.text;
+        }
+    else
+        if (![self.labelOne.text     isEqualToString: @"1"] &&
+            ![self.labelTwo.text     isEqualToString: @"2"] &&
+            ![self.labelThree.text   isEqualToString: @"3"] &&
+            ![self.labelFour.text    isEqualToString: @"4"] &&
+            ![self.labelFive.text    isEqualToString: @"5"] &&
+            ![self.labelSix.text     isEqualToString: @"6"] &&
+            ![self.labelSeven.text   isEqualToString: @"7"] &&
+            ![self.labelEight.text   isEqualToString: @"8"] &&
+            ![self.labelNine.text    isEqualToString: @"9"])
+        {
+            return @"draw";
+        }
     return nil;
 }
 
@@ -346,69 +328,6 @@
 
 - (void)computerAI
 {
-
-//    int i = 0;
-//    for (self.array[i]; i <= 8; i++)
-//    {
-//        if ([[self.array[i][0] text] isEqualToString:@"O"] &&
-//            [[self.array[i][1] text] isEqualToString:@"O"] &&
-//            ![[self.array[i][2] text] isEqualToString:@"X"] &&
-//            ![[self.array[i][2] text] isEqualToString:@"O"])
-//        {
-//            [[self.array[i][2] text] isEqualToString:@"O"];
-//            [[self.array[i][2] color] isEqual:[UIColor redColor]];
-//        }
-//        else
-//            if ([[self.array[i][0] text] isEqualToString:@"O"] &&
-//                [[self.array[i][2] text] isEqualToString:@"O"] &&
-//                ![[self.array[i][1] text] isEqualToString:@"X"] &&
-//                ![[self.array[i][1] text] isEqualToString:@"O"])
-//            {
-//                [[self.array[i][1] text] isEqualToString:@"O"];
-//                [[self.array[i][1] color] isEqual:[UIColor redColor]];
-//            }
-//            else
-//                if ([[self.array[i][1] text] isEqualToString:@"O"] &&
-//                    [[self.array[i][2] text] isEqualToString:@"O"] &&
-//                    ![[self.array[i][0] text] isEqualToString:@"X"] &&
-//                    ![[self.array[i][0] text] isEqualToString:@"O"])
-//                {
-//                    [[self.array[i][0] text] isEqualToString:@"O"];
-//                    [[self.array[i][0] color] isEqual:[UIColor redColor]];
-//                }
-//                else
-//                    if ([[self.array[i][0] text] isEqualToString:@"X"] &&
-//                        [[self.array[i][2] text] isEqualToString:@"X"] &&
-//                        ![[self.array[i][1] text] isEqualToString:@"X"] &&
-//                        ![[self.array[i][1] text] isEqualToString:@"O"])
-//                    {
-//                        [[self.array[i][1] text] isEqualToString:@"O"];
-//                        [[self.array[i][1] color] isEqual:[UIColor redColor]];
-//                    }
-//                    else
-//                        if ([[self.array[i][1] text] isEqualToString:@"X"] &&
-//                            [[self.array[i][2] text] isEqualToString:@"X"] &&
-//                            ![[self.array[i][0] text] isEqualToString:@"X"] &&
-//                            ![[self.array[i][0] text] isEqualToString:@"O"])
-//                        {
-//                            [[self.array[i][0] text] isEqualToString:@"O"];
-//                            [[self.array[i][0] color] isEqual:[UIColor redColor]];
-//                        }
-//                        else
-//                            if ([[self.array[i][0] text] isEqualToString:@"X"] &&
-//                                [[self.array[i][2] text] isEqualToString:@"X"] &&
-//                                ![[self.array[i][1] text] isEqualToString:@"X"] &&
-//                                ![[self.array[i][1] text] isEqualToString:@"O"])
-//                            {
-//                                [[self.array[i][1] text] isEqualToString:@"O"];
-//                                [[self.array[i][1] color] isEqual:[UIColor redColor]];
-//                            }
-//    }
-
-
-
-
-#pragma mark first move
     if ([self.labelFive.text isEqualToString:@"5"])
     {
         self.labelFive.text = @"O";
@@ -421,7 +340,7 @@
             self.labelOne.text = @"O";
             self.labelOne.textColor = [UIColor redColor];
         }
-#pragma mark action
+
     else
         if ([self.labelOne.text isEqualToString:@"O"] &&
             [self.labelTwo.text isEqualToString:@"O"] &&
@@ -614,7 +533,7 @@
             self.labelSeven.text = @"O";
             self.labelSeven.textColor = [UIColor redColor];
         }
-#pragma mark defense
+
     else
         if ([self.labelOne.text isEqualToString:@"X"] &&
             [self.labelTwo.text isEqualToString:@"X"] &&
@@ -807,7 +726,7 @@
             self.labelSeven.text = @"O";
             self.labelSeven.textColor = [UIColor redColor];
         }
-#pragma mark second move
+
     else
         if ([self.labelFive.text isEqualToString:@"O"])
         {
@@ -987,6 +906,7 @@
                     self.labelThree.textColor = [UIColor redColor];
                 }
         }
+
     [self checkingWinnerO];
 }
 
@@ -1015,7 +935,8 @@
 - (void)swtich
 {
 //switch to the other player
-    if ([self.navigationItem.title isEqualToString:@"Battle Begin"]) {
+    if ([self.navigationItem.title isEqualToString:@"Battle Begin"])
+    {
         if ([self.label.text isEqualToString:@"X"] ||
             [self.label.text isEqualToString:@"O"])
         {
@@ -1040,7 +961,8 @@
     }
 //switch to computer
     else
-        if ([self.navigationItem.title isEqualToString:@"Challenge Accpeted"]) {
+        if ([self.navigationItem.title isEqualToString:@"Challenge Accpeted"])
+        {
             if ([self.label.text isEqualToString:@"X"] ||
                 [self.label.text isEqualToString:@"O"])
             {
@@ -1077,7 +999,8 @@
     [UIView animateWithDuration:1.0 animations:^
      {
          self.whichPlayerLabel.center = self.originalPlayerLabelCenter;
-     }];
+     }
+    ];
 }
 
 //assign X or O by panGesture
